@@ -17,7 +17,7 @@
 
 # misc
 .DS_Store
-.env*
+secreats.json
 
 # debug
 npm-debug.log*
