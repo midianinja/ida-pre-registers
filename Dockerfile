@@ -27,3 +27,4 @@ USER node
 
 # Running the app
 CMD [ "npm", "start" ]
+
