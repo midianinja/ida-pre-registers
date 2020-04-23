@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:alpine
 
 ARG IDA_BASE_URI
 
@@ -17,6 +17,13 @@ RUN cat secrets.json
 
 # Building app
 RUN npm run build
+
+# Expose the listening port
+EXPOSE 3000
+
+# Run container as non-root (unprivileged) user
+# The node user is provided in the Node.js Alpine base image
+USER node
 
 # Running the app
 CMD [ "npm", "start" ]
