@@ -1,0 +1,11 @@
+export const WHITE = '#FFFFFF';
+export const WHITE50 = 'rgba(255, 255, 255, 0.5)';
+export const LIGTH_PURPLE = '#A79CC8';
+export const PRIMARY_PURPLE = '#55497C';
+export const MEDIUM_PURPLE = '#4C416F';
+export const GREEN = '#39D364';
+export const PINK = '#FF2D76';
+export const TAG_COLOR_1 = '#7735E5';
+export const TAG_COLOR_2 = '#ECAB49';
+export const TAG_COLOR_3 = '#EF51C3';
+export const TAG_COLOR_4 = '#F0645B';

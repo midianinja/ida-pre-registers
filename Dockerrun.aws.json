@@ -1,0 +1,17 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "032383812007.dkr.ecr.us-west-2.amazonaws.com/ida-pre-registers:latest",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "HostPort": "80",
+      "ContainerPort": "8080"
+		},
+		{
+			"HostPort": "443",
+			"ContainerPort": "8080"
+		}
+  ]
+}

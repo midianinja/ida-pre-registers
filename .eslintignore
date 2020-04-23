@@ -1,0 +1,8 @@
+publi
+node_modules
+.cache
+gastby-browser.js
+gastby-config.js
+gastby-node.js
+gastby-ssr.js
+.eslintrc.js
