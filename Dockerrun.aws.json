@@ -7,11 +7,11 @@
   "Ports": [
     {
       "HostPort": "80",
-      "ContainerPort": "8080"
+      "ContainerPort": "3000"
 		},
 		{
 			"HostPort": "443",
-			"ContainerPort": "8080"
+			"ContainerPort": "3000"
 		}
   ]
 }
