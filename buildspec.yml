@@ -13,9 +13,6 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - echo REPOSITORY_URI $REPOSITORY_URI
-      - echo NODE_ENV $NODE_ENV
-      - echo IDA_BASE_URI $IDA_BASE_URI
       - docker build --build-arg NODE_ENV=$NODE_ENV --build-arg IDA_BASE_URI=$IDA_BASE_URI -t ida-pre-registers-prod:latest .
       - docker tag ida-pre-registers-prod:latest $REPOSITORY_URI:latest
   post_build:

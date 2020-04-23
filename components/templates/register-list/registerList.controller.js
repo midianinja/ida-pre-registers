@@ -47,7 +47,7 @@ export const handleRegister = async ({
 
   let saveResponse;
   try {
-    saveResponse = await axios.post`${process.env.IDA_BASE_URI}/create-pre-register-list`, {
+    saveResponse = await axios.post(`${process.env.IDA_BASE_URI}/create-pre-register-list`, {
       category: category.id,
       answers,
       quiz,
