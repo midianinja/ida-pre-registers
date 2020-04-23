@@ -1,13 +1,13 @@
 branch-defaults:
   master:
-    environment: web-production
+    environment: ida-pre-registers
 environment-defaults:
-  web-production:
+  ida-pre-registers:
     branch: null
     repository: null
 global:
-  application_name: som
-  default_ec2_keyname: web-prod
+  application_name: ida-pre-registers
+  default_ec2_keyname: ida-pre-registers-prod
   default_platform: arn:aws:elasticbeanstalk:us-west-2::platform/Docker running on
     64bit Amazon Linux/2.12.16
   default_region: us-west-2
