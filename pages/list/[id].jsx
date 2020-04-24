@@ -26,6 +26,7 @@ const ListPage = () => {
   console.log('filter', filter);
   const filteredAnswers =  filterAnswers({ filter, answers });
   console.log('filteredAnswers', filteredAnswers);
+  
   return (
     <div>
       <BaseHead

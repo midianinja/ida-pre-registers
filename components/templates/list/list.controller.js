@@ -37,6 +37,8 @@ export const getList = async ({
 
 export const filterAnswers = ({ answers, filter }) => answers.filter((answer) => {
   let valid = true;
+
+  if (Object.keys(answers).length === 28) valid = false;
   if (filter.state.id && answer.state !== filter.state.id) valid = false;
 
   const interests = answer.interest_areas.split(', ');
