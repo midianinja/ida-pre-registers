@@ -12,7 +12,7 @@ const ListPage = () => {
   const [page, setPage] = useState(1);
   const [answers, setAnswers] = useState([]);
   const [filter, setFilter] = useState({});
-  const answersPerPage = 5;
+  const answersPerPage = 10;
 
   useEffect(() => {
     if (query.id) {
