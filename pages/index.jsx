@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import BaseHead from '../components/BaseHead';
 import RegisterList from '../components/templates/register-list/RegisterList';
 import { handleRegister } from '../components/templates/register-list/registerList.controller';
 
 const IndexPage = () => {
+  const router = useRouter();
   const [csv, setCSV] = useState(null);
   const [csvFile, setCSVFile] = useState(null);
   const [category, setCategory] = useState(null);
@@ -28,6 +30,7 @@ const IndexPage = () => {
         onCategoryChange={setCategory}
         onSubmit={() => handleRegister({
           csv: csvFile, category, setLoading, setError,
+          router,
         })}
       />
     </div>

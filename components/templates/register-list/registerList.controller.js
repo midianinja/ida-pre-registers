@@ -38,6 +38,7 @@ const getQuizFromCSV = (file) => {
 
 export const handleRegister = async ({
   category, csv, setLoading, setError,
+  router,
 }) => {
   setError({});
   setLoading(true);
@@ -45,9 +46,8 @@ export const handleRegister = async ({
   const answers = await getAnswersFromCSV(csv);
   const quiz = await getQuizFromCSV(csv);
 
-  let saveResponse;
   try {
-    saveResponse = await axios.post(`${process.env.IDA_BASE_URI}/create-pre-register-list`, {
+    await axios.post(`${process.env.IDA_BASE_URI}/create-pre-register-list`, {
       category: category.id,
       answers,
       quiz,
@@ -60,7 +60,7 @@ export const handleRegister = async ({
     throw err;
   }
 
-  console.log(saveResponse);
+  router.push('/lists');
   setLoading(false);
 };
 

@@ -22,7 +22,10 @@ const ListPage = () => {
     }
   }, [query]);
 
+  console.log('answers', answers);
+  console.log('filter', filter);
   const filteredAnswers =  filterAnswers({ filter, answers });
+  console.log('filteredAnswers', filteredAnswers);
   return (
     <div>
       <BaseHead
