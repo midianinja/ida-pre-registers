@@ -36,10 +36,8 @@ export const getList = async ({
 };
 
 export const filterAnswers = ({ answers, filter }) => answers.filter((answer) => {
-  let valid = true;
-
-  if (Object.keys(answer).length === 28) valid = false;
-  if (filter.state.id && answer.state !== filter.state.id) valid = false;
+  if (Object.keys(answer).length !== 28) return false;
+  if (filter.state.id && answer.state !== filter.state.id) return false;
 
   const interests = answer.interest_areas.split(', ');
   const filtered = interests.filter((
@@ -52,13 +50,13 @@ export const filterAnswers = ({ answers, filter }) => answers.filter((answer) =>
   if (
     filter.keys.length &&
     filtered.length !== filter.keys.length
-  ) valid = false;
+  ) return false;
 
   if (
     filter.city &&
     !new RegExp(accentFold(filter.city), 'gi')
       .test(accentFold(answer.city))
-  ) valid = false;
+  ) return false;
 
-  return valid;
+  return true;
 });
