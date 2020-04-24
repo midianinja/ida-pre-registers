@@ -8,17 +8,10 @@ export const getList = async ({
   let listsResponse;
 
   try {
-    listsResponse = await axios.get(
-      `${process.env.IDA_BASE_URI}/find-pre-register-lists`,
-      { 
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          Accept: 'application/json',
-        },
-      },
-    );
+    listsResponse = await axios.get(`${process.env.IDA_BASE_URI}/find-pre-register-lists`);
   } catch (err) {
-    console.log([err]);
+    setLoading(false);
+    throw err;
   }
 
   setLoading(false);
