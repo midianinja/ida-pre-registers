@@ -18,7 +18,8 @@ const accentFold = (inStr) => inStr.replace(
 );
 
 export const getList = async ({
-  setLoading, id, setTitle, setAnswers,
+  setLoading, id, setTitle, setAnswers, setQuestions,
+  setQuiz,
 }) => {
   setLoading(true);
 
@@ -32,6 +33,11 @@ export const getList = async ({
 
   setTitle(categories.find((category) => listResponse.data.data.list.category === category.id).label);
   setAnswers(listResponse.data.data.list.answers);
+  setQuestions(listResponse.data.data.list.questions || [
+    'how_you_met',
+    'ninja_question',
+  ]);
+  setQuiz(listResponse.data.data.list.quiz);
   setLoading(false);
 };
 

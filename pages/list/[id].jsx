@@ -11,22 +11,22 @@ const ListPage = () => {
   const [title, setTitle] = useState('');
   const [page, setPage] = useState(1);
   const [answers, setAnswers] = useState([]);
+  const [quiz, setQuiz] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [filter, setFilter] = useState({});
   const answersPerPage = 10;
 
   useEffect(() => {
     if (query.id) {
       getList({
-        setLoading, id: query.id, setTitle, setAnswers,
+        setLoading, id: query.id, setTitle, setAnswers, setQuestions,
+        setQuiz,
       });
     }
   }, [query]);
 
-  console.log('answers', answers);
-  console.log('filter', filter);
   const filteredAnswers =  filterAnswers({ filter, answers });
-  console.log('filteredAnswers', filteredAnswers);
-  
+
   return (
     <div>
       <BaseHead
@@ -38,6 +38,11 @@ const ListPage = () => {
         title={title}
         answersAmount={answers.length}
         answers={filteredAnswers.slice((page - 1) * answersPerPage, page * answersPerPage)}
+        questions={
+          Object.keys(filteredAnswers[0] || {})
+            .map((key, index) => ({ key, text: quiz[index] }))
+            .filter(({ key }) => questions.findIndex(text => text === key) !== -1)
+        }
         onFilterChange={setFilter}
         pageNumber={page * answersPerPage}
         end={filteredAnswers.length <= page * answersPerPage}

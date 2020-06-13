@@ -11,13 +11,23 @@ const renderTags = ({ interestAreas }) => interestAreas.map(({ label, color }, i
   <Tag color={color} key={label + index}>{label.replace('\"', '')}</Tag>
 ));
 
+const renderQuestions = ({ questions, all }) => questions.map((question) => 
+  <>
+    <Question>{question.text}</Question>
+    <Answer>
+      {
+        Object.entries(all).find(answer => answer[0] === question.key)[1].trim() || 'Não preenchido.'
+      }
+    </Answer>
+  </>
+);
+
 const Card = ({
   name, city, state, occupation,
   instagram, interestAreas, ninjaQuestion, howYouMeet,
-  photo,
+  photo, questions, all,
 }) => {
   const [open, setOpen] = useState(false);
-
   return (
     <CardWrapper>
       <InfoWrapper>
@@ -43,10 +53,7 @@ const Card = ({
         </div>        
       </InfoWrapper>
       <QuizWrapper open={open}>
-        <Question>Você quer ser NINJA por quê?</Question>
-        <Answer>{ninjaQuestion}</Answer>
-        <Question>Como Conheceu a Mídia NINJA?</Question>
-        <Answer>{howYouMeet}</Answer>
+        { renderQuestions({ questions, all }) }
       </QuizWrapper>
       <SeeMore onClick={() => setOpen(!open)}>
         { !open ? 'Ver inscrição completa +' : 'Ver resumo da inscrição -' }
@@ -56,6 +63,7 @@ const Card = ({
 }
 
 Card.propTypes = {
+  all: PropTypes.array,
   photo: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,

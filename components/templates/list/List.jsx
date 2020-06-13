@@ -15,8 +15,9 @@ import {
 const COLORS = [TAG_COLOR_1, TAG_COLOR_2, TAG_COLOR_3, TAG_COLOR_4];
 const getRandomColor = () => COLORS[Math.floor(Math.random() * COLORS.length)];
 
-const renderCards = ({ answers }) => answers.map(answer => (
+const renderCards = ({ answers, questions }) => answers.map(answer => (
   <Card
+    all={answer}
     photo={`https://api.adorable.io/avatars/${Math.floor(Math.random() * 200)}`}
     key={answer.instagram}
     name={`${answer.first_name} ${answer.last_name}`}
@@ -24,6 +25,7 @@ const renderCards = ({ answers }) => answers.map(answer => (
     state={answer.state}
     occupation={answer.occupation}
     instagram={answer.instagram}
+    questions={questions}
     interestAreas={
       answer.interest_areas.split(', ').map((label) => ({
         label,
@@ -38,7 +40,7 @@ const renderCards = ({ answers }) => answers.map(answer => (
 const List = ({
   title, answersAmount, answers, onFilterChange,
   onPrevClick, onNextClick, pageNumber, end,
-  begin,
+  begin, questions,
 }) => (
   <ListTemplateWrapper>
     <ListTitle>
@@ -58,7 +60,7 @@ const List = ({
       onFilterChange={onFilterChange}
     />
     <AnswersWrapper>
-      {renderCards({ answers })}
+      {renderCards({ answers, questions })}
     </AnswersWrapper>
     <Pagination
       pageNumber={pageNumber}
@@ -81,6 +83,7 @@ List.propTypes = {
   answersAmount: PropTypes.number,
   pageNumber: PropTypes.number.isRequired,
   answers: PropTypes.array,
+  questions: PropTypes.array,
   end: PropTypes.bool.isRequired,
   begin: PropTypes.bool.isRequired,
   onFilterChange: PropTypes.func.isRequired,

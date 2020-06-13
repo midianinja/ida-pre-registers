@@ -14,7 +14,6 @@ export const getList = async ({
     throw err;
   }
 
-  console.log(listsResponse.data.data.pre_register_lists);
   setLoading(false);
   setLists(listsResponse.data.data.pre_register_lists);
 };
